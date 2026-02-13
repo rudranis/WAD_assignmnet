@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers - Butter Pizza</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-pizza-slice logo-icon"></i>
+                Butter Pizza
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="order.html">Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="offers.html">Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count badge bg-danger rounded-pill" style="display: none;">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="hero-title">Special Offers</h1>
+            <p class="hero-subtitle">Exclusive deals and promotions just for you</p>
+        </div>
+    </section>
+
+    <!-- Offers Content -->
+    <main class="container my-5">
+        <!-- Featured Offer -->
+        <div class="card card-modern mb-5 border-3 border-primary">
+            <div class="card-body p-4 p-md-5">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <span class="badge bg-danger mb-3">HOT DEAL</span>
+                        <h2 class="mb-3">Family Feast Bundle</h2>
+                        <p class="lead mb-4">2 large pizzas, 1 order of breadsticks, and 2-liter soda for only <strong>$34.99</strong></p>
+                        <div class="d-flex gap-3">
+                            <a href="order.html" class="btn btn-primary-custom">
+                                <i class="fas fa-shopping-cart me-2"></i>Order Now
+                            </a>
+                            <button class="btn btn-outline-primary" onclick="showToast('Offer saved to your account!', 'success')">
+                                <i class="fas fa-bookmark me-2"></i>Save Offer
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="display-1 text-primary">50%</div>
+                        <p class="text-muted">OFF</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- All Offers -->
+        <h3 class="text-center mb-4">All Available Offers</h3>
+        <div class="row g-4">
+            <!-- Offer 1 -->
+            <div class="col-md-6">
+                <div class="card offer-card position-relative">
+                    <span class="offer-badge">LIMITED TIME</span>
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3">2 Large Pizzas for $25</h4>
+                        <p class="card-text mb-4">Get any two large pizzas with up to 3 toppings each for just $25. Available for delivery and carryout.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-success fw-bold">Use Code: BUTTER25</span>
+                            <a href="order.html" class="btn btn-primary-custom btn-sm">
+                                Apply Offer
+                            </a>
+                        </div>
+                        <small class="text-muted mt-2 d-block">Valid until December 31, 2023</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Offer 2 -->
+            <div class="col-md-6">
+                <div class="card offer-card position-relative">
+                    <span class="offer-badge" style="background: linear-gradient(135deg, #FF6B35, #FF8B35);">NEW CUSTOMER</span>
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3">30% Off First Order</h4>
+                        <p class="card-text mb-4">New to Butter Pizza? Get 30% off your first order when you create an account.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-success fw-bold">Auto-applied at checkout</span>
+                            <a href="register.html" class="btn btn-primary-custom btn-sm">
+                                Create Account
+                            </a>
+                        </div>
+                        <small class="text-muted mt-2 d-block">For new customers only</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Offer 3 -->
+            <div class="col-md-6">
+                <div class="card offer-card position-relative">
+                    <span class="offer-badge" style="background: linear-gradient(135deg, var(--accent), #FFE082);">WEEKLY DEAL</span>
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3">Free Garlic Bread</h4>
+                        <p class="card-text mb-4">Order any large pizza and get a free order of garlic breadsticks. No code needed.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-success fw-bold">No code required</span>
+                            <a href="order.html" class="btn btn-primary-custom btn-sm">
+                                Order Large Pizza
+                            </a>
+                        </div>
+                        <small class="text-muted mt-2 d-block">Valid every Wednesday</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Offer 4 -->
+            <div class="col-md-6">
+                <div class="card offer-card position-relative">
+                    <span class="offer-badge" style="background: linear-gradient(135deg, var(--secondary), #00D4C9);">COMBO DEAL</span>
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3">Pizza + Wings Combo</h4>
+                        <p class="card-text mb-4">1 large pizza + 10 chicken wings + 2-liter soda for $29.99. Choose any pizza and wing flavor.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-success fw-bold">Use Code: COMBO29</span>
+                            <a href="order.html" class="btn btn-primary-custom btn-sm">
+                                Order Combo
+                            </a>
+                        </div>
+                        <small class="text-muted mt-2 d-block">Save $15.99</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Offer 5 -->
+            <div class="col-md-6">
+                <div class="card offer-card position-relative">
+                    <span class="offer-badge" style="background: linear-gradient(135deg, #9C27B0, #E91E63);">EARLY BIRD</span>
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3">20% Off Lunch Special</h4>
+                        <p class="card-text mb-4">Order between 11 AM - 2 PM and get 20% off your entire order. Perfect for lunch breaks!</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-success fw-bold">Use Code: LUNCH20</span>
+                            <a href="order.html" class="btn btn-primary-custom btn-sm">
+                                Order Lunch
+                            </a>
+                        </div>
+                        <small class="text-muted mt-2 d-block">11 AM - 2 PM daily</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Offer 6 -->
+            <div class="col-md-6">
+                <div class="card offer-card position-relative">
+                    <span class="offer-badge" style="background: linear-gradient(135deg, #4CAF50, #8BC34A);">LOYALTY</span>
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3">Buy 5 Get 1 Free</h4>
+                        <p class="card-text mb-4">Join our loyalty program and get 1 free large pizza after 5 purchases.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-success fw-bold">Join loyalty program</span>
+                            <button class="btn btn-primary-custom btn-sm" onclick="showToast('Loyalty program enrollment would start here', 'info')">
+                                Join Now
+                            </button>
+                        </div>
+                        <small class="text-muted mt-2 d-block">For registered users only</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- How to Use Offers -->
+        <div class="card card-modern mt-5">
+            <div class="card-body p-4 p-md-5">
+                <h4 class="card-title mb-4">How to Use These Offers</h4>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-tag fa-lg"></i>
+                                </div>
+                            </div>
+                            <h5>1. Choose Offer</h5>
+                            <p class="text-muted">Select an offer that suits your needs</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-shopping-cart fa-lg"></i>
+                                </div>
+                            </div>
+                            <h5>2. Add to Cart</h5>
+                            <p class="text-muted">Add qualifying items to your cart</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-credit-card fa-lg"></i>
+                                </div>
+                            </div>
+                            <h5>3. Apply Code</h5>
+                            <p class="text-muted">Enter promo code at checkout</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3">
+                        <i class="fas fa-pizza-slice me-2"></i>Butter Pizza
+                    </h4>
+                    <p class="opacity-75">Delicious pizza with signature butter crust, delivered hot and fresh.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html" class="d-block mb-2">Home</a>
+                        <a href="order.html" class="d-block mb-2">Order Online</a>
+                        <a href="offers.html" class="d-block mb-2">Special Offers</a>
+                        <a href="track.html" class="d-block mb-2">Track Order</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Contact</h5>
+                    <p class="opacity-75">
+                        <i class="fas fa-map-marker-alt me-2"></i>123 Pizza Street<br>
+                        <i class="fas fa-phone me-2"></i>(555) 123-PIZZA<br>
+                        <i class="fas fa-clock me-2"></i>10AM - 12AM Daily
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4 opacity-25">
+            <div class="text-center opacity-75">
+                <p>&copy; 2023 Butter Pizza. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

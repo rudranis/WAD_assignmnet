@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Butter Pizza</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-pizza-slice logo-icon"></i>
+                Butter Pizza
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="order.html">Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="offers.html">Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active position-relative" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count badge bg-danger rounded-pill" style="display: none;">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="hero-title">Your Shopping Cart</h1>
+            <p class="hero-subtitle">Review your order before checkout</p>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <main class="container my-5">
+        <div class="row">
+            <!-- Cart Items -->
+            <div class="col-lg-8">
+                <div class="card card-modern mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Order Items</h4>
+                        
+                        <div id="cartItems">
+                            <!-- Cart Item 1 -->
+                            <div class="cart-item">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2">
+                                        <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                             class="img-fluid rounded" alt="Pepperoni Pizza">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 class="mb-1">Buttery Pepperoni Pizza</h5>
+                                        <p class="text-muted mb-2">Large, Extra cheese, Extra pepperoni</p>
+                                        <div class="d-flex align-items-center">
+                                            <button class="btn btn-outline-primary btn-sm" onclick="updateQuantity(0, -1)">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <span class="mx-3 fw-bold">1</span>
+                                            <button class="btn btn-outline-primary btn-sm" onclick="updateQuantity(0, 1)">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-md-end">
+                                        <h5 class="mb-2">$14.99</h5>
+                                        <button class="btn btn-outline-danger btn-sm" onclick="removeFromCart(0)">
+                                            <i class="fas fa-trash me-1"></i>Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Cart Item 2 -->
+                            <div class="cart-item">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2">
+                                        <img src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
+                                             class="img-fluid rounded" alt="Margherita Pizza">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 class="mb-1">Classic Margherita Pizza</h5>
+                                        <p class="text-muted mb-2">Medium, Regular crust</p>
+                                        <div class="d-flex align-items-center">
+                                            <button class="btn btn-outline-primary btn-sm" onclick="updateQuantity(1, -1)">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <span class="mx-3 fw-bold">2</span>
+                                            <button class="btn btn-outline-primary btn-sm" onclick="updateQuantity(1, 1)">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-md-end">
+                                        <h5 class="mb-2">$25.98</h5>
+                                        <button class="btn btn-outline-danger btn-sm" onclick="removeFromCart(1)">
+                                            <i class="fas fa-trash me-1"></i>Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Empty Cart Message -->
+                        <div id="emptyCart" class="text-center py-5" style="display: none;">
+                            <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                            <h5>Your cart is empty</h5>
+                            <p class="text-muted">Add some delicious pizzas from our menu!</p>
+                            <a href="order.html" class="btn btn-primary-custom mt-3">
+                                <i class="fas fa-pizza-slice me-2"></i>Order Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Delivery Address -->
+                <div class="card card-modern mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-map-marker-alt me-2 text-primary"></i>Delivery Address
+                        </h5>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="mb-2">123 Pizza Street, Apt 4B</p>
+                                <p class="mb-2">Cheesetown, CA 90210</p>
+                                <p class="mb-0 text-muted">Phone: (555) 123-4567</p>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <button class="btn btn-outline-primary" onclick="showToast('Change address feature would open here', 'info')">
+                                    Change Address
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Special Instructions -->
+                <div class="card card-modern">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-edit me-2 text-primary"></i>Special Instructions
+                        </h5>
+                        <textarea class="form-control form-control-modern" rows="3" 
+                                  placeholder="Add any special instructions for delivery..."></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="col-lg-4">
+                <div class="card cart-total sticky-top" style="top: 20px;">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Order Summary</h4>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal</span>
+                                <span id="subtotal">$40.97</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Delivery Fee</span>
+                                <span>$3.99</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Tax (8.5%)</span>
+                                <span>$3.48</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-4">
+                                <h5 class="mb-0">Total</h5>
+                                <h5 id="totalAmount">$48.44</h5>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-3">
+                            <button class="btn btn-primary-custom btn-lg" 
+                                    onclick="showToast('Proceeding to checkout!', 'success')">
+                                <i class="fas fa-credit-card me-2"></i>Proceed to Checkout
+                            </button>
+                            
+                            <a href="order.html" class="btn btn-outline-light">
+                                <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                            </a>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="mb-3">Payment Methods</h6>
+                            <div class="d-flex gap-2">
+                                <i class="fab fa-cc-visa fa-2x text-light"></i>
+                                <i class="fab fa-cc-mastercard fa-2x text-light"></i>
+                                <i class="fab fa-cc-amex fa-2x text-light"></i>
+                                <i class="fab fa-cc-paypal fa-2x text-light"></i>
+                                <i class="fab fa-apple-pay fa-2x text-light"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="mb-3">Estimated Delivery Time</h6>
+                            <div class="alert alert-success bg-transparent border-success">
+                                <i class="fas fa-clock me-2"></i>
+                                <strong>25-35 minutes</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="saveAddress" checked>
+                                <label class="form-check-label" for="saveAddress">
+                                    Save this address for future orders
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3">
+                        <i class="fas fa-pizza-slice me-2"></i>Butter Pizza
+                    </h4>
+                    <p class="opacity-75">Delicious pizza with signature butter crust, delivered hot and fresh.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html" class="d-block mb-2">Home</a>
+                        <a href="order.html" class="d-block mb-2">Order Online</a>
+                        <a href="offers.html" class="d-block mb-2">Special Offers</a>
+                        <a href="track.html" class="d-block mb-2">Track Order</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Contact</h5>
+                    <p class="opacity-75">
+                        <i class="fas fa-map-marker-alt me-2"></i>123 Pizza Street<br>
+                        <i class="fas fa-phone me-2"></i>(555) 123-PIZZA<br>
+                        <i class="fas fa-clock me-2"></i>10AM - 12AM Daily
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4 opacity-25">
+            <div class="text-center opacity-75">
+                <p>&copy; 2023 Butter Pizza. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

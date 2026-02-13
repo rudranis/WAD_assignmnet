@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butter Pizza - Delicious Pizza Delivery</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #FFE5D9;
+            --accent-color: #F4C95D;
+            --dark-color: #2E282A;
+            --light-color: #F7F7F7;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.8rem;
+        }
+        
+        .butter-logo {
+            color: var(--accent-color);
+        }
+        
+        .homepage-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1681&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+        
+        .page-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .page-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .home-btn {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .home-btn:hover {
+            background-color: var(--dark-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .page-content {
+            display: none;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .active-page {
+            display: block;
+        }
+        
+        .pizza-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .pizza-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .pizza-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .cart-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #e05a2b;
+            border-color: #e05a2b;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(255, 107, 53, 0.25);
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+        
+        .page-title {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .main-page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="butter-logo"><i class="fas fa-pizza-slice"></i></span> Butter Pizza
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('home')">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('main')">Order Online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('login')">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('register')">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Button (Top Left) -->
+    <a href="#" class="home-btn" onclick="showPage('home')">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Home Page with Cards -->
+    <div id="home" class="page-content active-page">
+        <div class="homepage-hero">
+            <h1 class="display-4">Welcome to Butter Pizza</h1>
+            <p class="lead">Delicious, buttery crust pizza delivered to your door</p>
+            <button class="btn btn-accent btn-lg mt-3" onclick="showPage('main')">Order Now</button>
+        </div>
+        
+        <div class="container">
+            <h2 class="text-center mb-5">Explore Our Website</h2>
+            <div class="row">
+                <!-- Login Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card page-card shadow" onclick="showPage('login')">
+                        <div class="card-body text-center p-5">
+                            <div class="card-icon">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
+                            <h3 class="card-title">Login</h3>
+                            <p class="card-text">Access your account to track orders, save favorites, and more.</p>
+                            <div class="mt-4">
+                                <span class="btn btn-primary">Go to Login</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Register Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card page-card shadow" onclick="showPage('register')">
+                        <div class="card-body text-center p-5">
+                            <div class="card-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3 class="card-title">Register</h3>
+                            <p class="card-text">Create a new account to get exclusive offers and faster checkout.</p>
+                            <div class="mt-4">
+                                <span class="btn btn-primary">Create Account</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Page Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card page-card shadow" onclick="showPage('main')">
+                        <div class="card-body text-center p-5">
+                            <div class="card-icon">
+                                <i class="fas fa-pizza-slice"></i>
+                            </div>
+                            <h3 class="card-title">Order Pizza</h3>
+                            <p class="card-text">Browse our menu and order delicious butter crust pizza online.</p>
+                            <div class="mt-4">
+                                <span class="btn btn-primary">Order Now</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- View Cart Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card page-card shadow" onclick="showPage('cart')">
+                        <div class="card-body text-center p-5">
+                            <div class="card-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="card-title">View Cart</h3>
+                            <p class="card-text">Review your order, modify items, and proceed to checkout.</p>
+                            <div class="mt-4">
+                                <span class="btn btn-primary">View Cart</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Special Offers Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card page-card shadow" onclick="showPage('offers')">
+                        <div class="card-body text-center p-5">
+                            <div class="card-icon">
+                                <i class="fas fa-tag"></i>
+                            </div>
+                            <h3 class="card-title">Special Offers</h3>
+                            <p class="card-text">Check out our latest deals and promotions for great savings.</p>
+                            <div class="mt-4">
+                                <span class="btn btn-primary">View Offers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Track Order Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card page-card shadow" onclick="showPage('track')">
+                        <div class="card-body text-center p-5">
+                            <div class="card-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <h3 class="card-title">Track Order</h3>
+                            <p class="card-text">Track your delivery in real-time from our kitchen to your door.</p>
+                            <div class="mt-4">
+                                <span class="btn btn-primary">Track Now</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login" class="page-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="page-title">Login to Your Account</h2>
+                    <div class="card shadow">
+                        <div class="card-body p-5">
+                            <form id="loginForm">
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <p>Don't have an account? <a href="#" onclick="showPage('register')">Register here</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Page -->
+    <div id="register" class="page-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="page-title">Create a New Account</h2>
+                    <div class="card shadow">
+                        <div class="card-body p-5">
+                            <form id="registerForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="registerEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="registerPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirmPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">Create Account</button>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <p>Already have an account? <a href="#" onclick="showPage('login')">Login here</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Page (Order Pizza) -->
+    <div id="main" class="page-content">
+        <div class="container">
+            <div class="main-page-header">
+                <h1 class="display-5">Order Delicious Butter Pizza</h1>
+                <p class="lead">Choose from our selection of signature pizzas with our famous buttery crust</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card pizza-card shadow">
+                        <img src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" class="card-img-top pizza-img" alt="Margherita Pizza">
+                        <div class="card-body">
+                            <h5 class="card-title">Classic Margherita</h5>
+                            <p class="card-text">Fresh mozzarella, tomato sauce, basil, and our signature butter crust.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-primary">$12.99</span>
+                                <button class="btn btn-primary" onclick="addToCart('Classic Margherita', 12.99)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card pizza-card shadow">
+                        <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" class="card-img-top pizza-img" alt="Pepperoni Pizza">
+                        <div class="card-body">
+                            <h5 class="card-title">Buttery Pepperoni</h5>
+                            <p class="card-text">Double pepperoni, mozzarella, tomato sauce on our butter crust.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-primary">$14.99</span>
+                                <button class="btn btn-primary" onclick="addToCart('Buttery Pepperoni', 14.99)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card pizza-card shadow">
+                        <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" class="card-img-top pizza-img" alt="Veggie Pizza">
+                        <div class="card-body">
+                            <h5 class="card-title">Garden Veggie Delight</h5>
+                            <p class="card-text">Bell peppers, mushrooms, onions, olives, and tomatoes on butter crust.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-primary">$13.99</span>
+                                <button class="btn btn-primary" onclick="addToCart('Garden Veggie Delight', 13.99)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-accent btn-lg" onclick="showPage('cart')">
+                    <i class="fas fa-shopping-cart"></i> View Cart & Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Cart Page -->
+    <div id="cart" class="page-content">
+        <div class="container">
+            <h2 class="page-title">Your Shopping Cart</h2>
+            
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Order Summary</h4>
+                            <div id="cartItems">
+                                <!-- Cart items will be dynamically added here -->
+                                <div class="cart-item">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h5>Buttery Pepperoni Pizza</h5>
+                                            <p class="text-muted">Large, Extra cheese</p>
+                                        </div>
+                                        <div class="text-end">
+                                            <h5>$14.99</h5>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <button type="button" class="btn btn-outline-primary">-</button>
+                                                <button type="button" class="btn btn-outline-primary disabled">1</button>
+                                                <button type="button" class="btn btn-outline-primary">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cart-item">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h5>Classic Margherita Pizza</h5>
+                                            <p class="text-muted">Medium, Regular crust</p>
+                                        </div>
+                                        <div class="text-end">
+                                            <h5>$12.99</h5>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <button type="button" class="btn btn-outline-primary">-</button>
+                                                <button type="button" class="btn btn-outline-primary disabled">2</button>
+                                                <button type="button" class="btn btn-outline-primary">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h5>Subtotal</h5>
+                                    <h5 id="cartSubtotal">$40.97</h5>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <h5>Delivery Fee</h5>
+                                    <h5>$3.99</h5>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <h5>Tax</h5>
+                                    <h5>$3.60</h5>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between">
+                                    <h4>Total</h4>
+                                    <h4 id="cartTotal">$48.56</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Checkout</h4>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-lg" onclick="alert('Proceeding to checkout!')">Proceed to Checkout</button>
+                                <button class="btn btn-outline-primary" onclick="showPage('main')">Continue Shopping</button>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5>Delivery Address</h5>
+                                <p>123 Pizza Street, Cheesetown, CA 90210</p>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Change Address</a>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5>Estimated Delivery Time</h5>
+                                <p><i class="fas fa-clock"></i> 25-35 minutes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Offers Page -->
+    <div id="offers" class="page-content">
+        <div class="container">
+            <h2 class="page-title">Special Offers & Deals</h2>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow border-success">
+                        <div class="card-body p-4">
+                            <span class="badge bg-success mb-3">LIMITED TIME</span>
+                            <h4 class="card-title">2 Large Pizzas for $25</h4>
+                            <p class="card-text">Get any two large pizzas with up to 3 toppings each for just $25. Available for delivery and carryout.</p>
+                            <div class="mt-3">
+                                <button class="btn btn-success" onclick="showPage('main')">Order Now</button>
+                                <small class="text-muted ms-3">Code: BUTTER25</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow border-warning">
+                        <div class="card-body p-4">
+                            <span class="badge bg-warning mb-3">NEW CUSTOMER</span>
+                            <h4 class="card-title">30% Off First Order</h4>
+                            <p class="card-text">New to Butter Pizza? Get 30% off your first order when you create an account.</p>
+                            <div class="mt-3">
+                                <button class="btn btn-warning" onclick="showPage('register')">Create Account</button>
+                                <small class="text-muted ms-3">Auto-applied at checkout</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow border-primary">
+                        <div class="card-body p-4">
+                            <span class="badge bg-primary mb-3">WEEKLY DEAL</span>
+                            <h4 class="card-title">Free Garlic Bread</h4>
+                            <p class="card-text">Order any large pizza and get a free order of garlic breadsticks. No code needed.</p>
+                            <div class="mt-3">
+                                <button class="btn btn-primary" onclick="showPage('main')">Order Large Pizza</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow border-danger">
+                        <div class="card-body p-4">
+                            <span class="badge bg-danger mb-3">HOT DEAL</span>
+                            <h4 class="card-title">Family Feast Bundle</h4>
+                            <p class="card-text">2 large pizzas, 1 order of breadsticks, and 2-liter soda for only $34.99.</p>
+                            <div class="mt-3">
+                                <button class="btn btn-danger" onclick="showPage('main')">Get Bundle</button>
+                                <small class="text-muted ms-3">Save $12</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Track Order Page -->
+    <div id="track" class="page-content">
+        <div class="container">
+            <h2 class="page-title">Track Your Order</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-5">
+                                <h3>Order #BUTTER-78945</h3>
+                                <p class="text-muted">Estimated delivery: 25 minutes</p>
+                            </div>
+                            
+                            <!-- Order Tracking Timeline -->
+                            <div class="tracking-timeline">
+                                <div class="tracking-step completed">
+                                    <div class="tracking-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="tracking-content">
+                                        <h5>Order Received</h5>
+                                        <p class="text-muted">Order confirmed at 6:15 PM</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="tracking-step completed">
+                                    <div class="tracking-icon">
+                                        <i class="fas fa-pizza-slice"></i>
+                                    </div>
+                                    <div class="tracking-content">
+                                        <h5>Preparing Your Pizza</h5>
+                                        <p class="text-muted">Our chefs are preparing your order</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="tracking-step active">
+                                    <div class="tracking-icon">
+                                        <i class="fas fa-fire"></i>
+                                    </div>
+                                    <div class="tracking-content">
+                                        <h5>In the Oven</h5>
+                                        <p class="text-muted">Your pizza is baking to perfection</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="tracking-step">
+                                    <div class="tracking-icon">
+                                        <i class="fas fa-shipping-fast"></i>
+                                    </div>
+                                    <div class="tracking-content">
+                                        <h5>Out for Delivery</h5>
+                                        <p class="text-muted">Driver will depart soon with your order</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="tracking-step">
+                                    <div class="tracking-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="tracking-content">
+                                        <h5>Delivered</h5>
+                                        <p class="text-muted">Your order will arrive at your door</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-5">
+                                <div class="alert alert-info">
+                                    <h5><i class="fas fa-user"></i> Your Driver: Michael</h5>
+                                    <p>Michael will contact you when he's 5 minutes away</p>
+                                </div>
+                                <button class="btn btn-primary" onclick="alert('Live tracking would be enabled here!')">
+                                    <i class="fas fa-map-marker-alt"></i> View Live Tracking Map
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Butter Pizza</h4>
+                    <p>Delicious pizza with our signature butter crust, delivered hot and fresh to your door.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" class="text-white-50" onclick="showPage('main')">Order Online</a></li>
+                        <li><a href="#" class="text-white-50" onclick="showPage('offers')">Special Offers</a></li>
+                        <li><a href="#" class="text-white-50" onclick="showPage('track')">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i> 123 Pizza Street, Cheesetown</p>
+                    <p class="mb-1"><i class="fas fa-phone me-2"></i> (555) 123-PIZZA</p>
+                    <p class="mb-1"><i class="fas fa-envelope me-2"></i> info@butterpizza.com</p>
+                    <p class="mb-0"><i class="fas fa-clock me-2"></i> Open 10AM - 12AM Daily</p>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4">
+            <div class="text-center">
+                <p>&copy; 2023 Butter Pizza. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Function to show specific page and hide others
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                page.classList.remove('active-page');
+            });
+            
+            // Show the selected page
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            return false;
+        }
+        
+        // Function to add item to cart
+        function addToCart(itemName, itemPrice) {
+            alert(`${itemName} added to cart!`);
+            // In a real app, this would update the cart state
+            showPage('cart');
+        }
+        
+        // Handle form submissions
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login form submitted! (This is a demo - no actual login occurs)');
+            showPage('main');
+        });
+        
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Registration successful! (This is a demo - no actual registration occurs)');
+            showPage('main');
+        });
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make sure home page is active on initial load
+            showPage('home');
+            
+            // Add some CSS for the tracking timeline
+            const style = document.createElement('style');
+            style.textContent = `
+                .tracking-timeline {
+                    position: relative;
+                    padding-left: 30px;
+                }
+                .tracking-step {
+                    position: relative;
+                    padding-bottom: 30px;
+                    display: flex;
+                }
+                .tracking-step:last-child {
+                    padding-bottom: 0;
+                }
+                .tracking-step:before {
+                    content: '';
+                    position: absolute;
+                    left: 15px;
+                    top: 30px;
+                    bottom: -30px;
+                    width: 2px;
+                    background-color: #e0e0e0;
+                }
+                .tracking-step:last-child:before {
+                    display: none;
+                }
+                .tracking-step.completed:before {
+                    background-color: var(--primary-color);
+                }
+                .tracking-icon {
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    background-color: #e0e0e0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 15px;
+                    z-index: 1;
+                }
+                .tracking-step.completed .tracking-icon {
+                    background-color: var(--primary-color);
+                    color: white;
+                }
+                .tracking-step.active .tracking-icon {
+                    background-color: var(--accent-color);
+                    color: var(--dark-color);
+                }
+                .tracking-content {
+                    flex: 1;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butter Pizza - Home</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-pizza-slice logo-icon"></i>
+                Butter Pizza
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="order.html">Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="offers.html">Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count badge bg-danger rounded-pill" style="display: none;">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="hero-title">Butter Pizza</h1>
+            <p class="hero-subtitle">Experience the perfect blend of crispy crust and rich, buttery flavor. Made fresh, delivered hot.</p>
+            <a href="order.html" class="btn btn-primary-custom btn-lg">Order Now</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <h2 class="text-center mb-5 text-gradient">Explore Our Features</h2>
+        
+        <div class="row g-4">
+            <!-- Login Card -->
+            <div class="col-md-4 col-lg-4">
+                <a href="login.html" class="text-decoration-none">
+                    <div class="card card-modern">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
+                            <h3 class="card-title">Login</h3>
+                            <p class="card-text">Access your account to track orders and save favorites.</p>
+                            <span class="btn btn-primary-custom mt-3">Go to Login</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Register Card -->
+            <div class="col-md-4 col-lg-4">
+                <a href="register.html" class="text-decoration-none">
+                    <div class="card card-modern">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3 class="card-title">Register</h3>
+                            <p class="card-text">Create account for exclusive offers and faster checkout.</p>
+                            <span class="btn btn-primary-custom mt-3">Create Account</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Order Card -->
+            <div class="col-md-4 col-lg-4">
+                <a href="order.html" class="text-decoration-none">
+                    <div class="card card-modern">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-pizza-slice"></i>
+                            </div>
+                            <h3 class="card-title">Order Pizza</h3>
+                            <p class="card-text">Browse menu and order delicious butter crust pizza.</p>
+                            <span class="btn btn-primary-custom mt-3">Order Now</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Cart Card -->
+            <div class="col-md-4 col-lg-4">
+                <a href="cart.html" class="text-decoration-none">
+                    <div class="card card-modern">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="card-title">View Cart</h3>
+                            <p class="card-text">Review your order and proceed to checkout.</p>
+                            <span class="btn btn-primary-custom mt-3">View Cart</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Offers Card -->
+            <div class="col-md-4 col-lg-4">
+                <a href="offers.html" class="text-decoration-none">
+                    <div class="card card-modern">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-tag"></i>
+                            </div>
+                            <h3 class="card-title">Special Offers</h3>
+                            <p class="card-text">Check out latest deals and promotions for savings.</p>
+                            <span class="btn btn-primary-custom mt-3">View Offers</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Track Card -->
+            <div class="col-md-4 col-lg-4">
+                <a href="track.html" class="text-decoration-none">
+                    <div class="card card-modern">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <h3 class="card-title">Track Order</h3>
+                            <p class="card-text">Track delivery in real-time from kitchen to door.</p>
+                            <span class="btn btn-primary-custom mt-3">Track Now</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3">
+                        <i class="fas fa-pizza-slice me-2"></i>Butter Pizza
+                    </h4>
+                    <p class="opacity-75">Delicious pizza with signature butter crust, delivered hot and fresh.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html" class="d-block mb-2">Home</a>
+                        <a href="order.html" class="d-block mb-2">Order Online</a>
+                        <a href="offers.html" class="d-block mb-2">Special Offers</a>
+                        <a href="track.html" class="d-block mb-2">Track Order</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Contact</h5>
+                    <p class="opacity-75">
+                        <i class="fas fa-map-marker-alt me-2"></i>123 Pizza Street<br>
+                        <i class="fas fa-phone me-2"></i>(555) 123-PIZZA<br>
+                        <i class="fas fa-clock me-2"></i>10AM - 12AM Daily
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4 opacity-25">
+            <div class="text-center opacity-75">
+                <p>&copy; 2023 Butter Pizza. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Bootstrap & Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
