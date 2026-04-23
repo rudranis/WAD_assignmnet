@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 3a | Static Server</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <strong>Node Static Server</strong>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="features.html">Features</a>
+        <a href="/">File List</a>
+      </div>
+    </nav>
+
+    <section class="hero-content">
+      <p class="tag">Assignment 3a</p>
+      <h1>Serve static websites using Node.js core modules.</h1>
+      <p>
+        This page is delivered by a custom Node.js server using the
+        <strong>http</strong>, <strong>fs</strong>, <strong>url</strong> and
+        <strong>path</strong> modules.
+      </p>
+      <div class="actions">
+        <a class="button" href="about.html">Learn More</a>
+        <a class="button secondary" href="features.html">View Features</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="cards">
+      <article>
+        <span>01</span>
+        <h2>HTTP Server</h2>
+        <p>Creates a web server and responds to browser requests.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h2>File Reading</h2>
+        <p>Reads HTML, CSS, text and image files from the assignment folder.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h2>MIME Types</h2>
+        <p>Sends the correct content type so every static asset loads properly.</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="tag">How to run</p>
+        <h2>Start the server from the terminal.</h2>
+        <p>The same server can open this home page, the about page, the features page and text files.</p>
+      </div>
+      <pre><code>cd Ass3a
+node server.js</code></pre>
+    </section>
+  </main>
+</body>
+</html>

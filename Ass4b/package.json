@@ -1,0 +1,10 @@
+{
+  "name": "ass4b-elastic-beanstalk",
+  "version": "1.0.0",
+  "description": "Assignment 4b - AWS Elastic Beanstalk deployment sample",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC"
+}

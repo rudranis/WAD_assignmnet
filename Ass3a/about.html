@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Assignment 3a</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="page-header">
+    <nav>
+      <strong>Node Static Server</strong>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="features.html">Features</a>
+        <a href="/">File List</a>
+      </div>
+    </nav>
+    <div class="page-title">
+      <p class="tag">About</p>
+      <h1>A small website served without Express.</h1>
+      <p>This assignment shows how Node.js core modules can serve a complete static website.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="split">
+      <div>
+        <p class="tag">Purpose</p>
+        <h2>Why this server exists</h2>
+        <p>
+          The server listens for browser requests, maps each URL to a file inside this folder,
+          reads that file, and sends it back with the correct content type.
+        </p>
+      </div>
+      <div class="info-box">
+        <h2>Modules Used</h2>
+        <ul>
+          <li><strong>http</strong> creates the web server.</li>
+          <li><strong>fs</strong> reads files from disk.</li>
+          <li><strong>path</strong> safely builds file paths.</li>
+          <li><strong>URL</strong> reads the requested route.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

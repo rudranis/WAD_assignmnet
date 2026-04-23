@@ -1,0 +1,11 @@
+{
+  "name": "ass3a-static-file-server",
+  "version": "1.0.0",
+  "description": "Assignment 3a - Static file web server using Node.js core modules",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
